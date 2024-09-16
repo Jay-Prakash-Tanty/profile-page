@@ -23,7 +23,7 @@ const signupSchema = z.object({
   password: z
     .string()
     .min(8, "Password must be at least 8 characters long")
-    .regex(passwordRegex, "Password must contain at least a uppercase letter, a lowercase letter, and a special character")
+    .regex(passwordRegex, "Password must contain at least one uppercase letter, one lowercase letter, and one special character")
 });
 
 const loginSchema = z.object({

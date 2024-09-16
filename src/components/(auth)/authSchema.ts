@@ -13,7 +13,7 @@ const fullNameRegex = /^[a-zA-Z\s'-]{3,50}$/;
 const signupSchema = z.object({
   fullName: z
     .string()
-    .min(3, "Full name is required")
+    .min(3, "Full name must be atleast 3 characters")
     .max(50, "Full name must be less than 50 characters")
     .regex(fullNameRegex, "only uppercase, lowercase, space, hyphen(-), apostrophe (') are allowed"),
   email: z

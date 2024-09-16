@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 /*
-password must contain atleast 8 characters , a uppercase letter , a lowercase letter and a special character
+password must contain atleast 8 characters , one uppercase letter , one lowercase letter and one special character
 */
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
 

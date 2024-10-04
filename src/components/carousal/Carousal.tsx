@@ -1,11 +1,5 @@
 "use client";
 
-interface CarouselProps {
-  imagesArray: { src: string; caption: string }[];
-  interval: number;
-}
-
-
 import { useState, useEffect } from 'react';
 
 interface CarouselProps {
@@ -24,7 +18,7 @@ export default function Carousel({ imagesArray, interval }: CarouselProps) {
   }, [imagesArray, interval]);
 
   return (
-    <div className="relative w-full" style={{ height: '700px' }}>
+    <div className="relative w-full h-[70vh] md:h-[700px]">
       <div className="overflow-hidden rounded-lg shadow-lg h-full">
         <div
           className="absolute top-0 left-0 w-full h-full"
@@ -33,12 +27,11 @@ export default function Carousel({ imagesArray, interval }: CarouselProps) {
         <img
           src={imagesArray[currentIndex].src}
           alt={`Slide ${currentIndex + 1}`}
-          className="w-full h-full"
-          style={{ width: '100%', height: '700px', objectFit: 'cover' }}
+          className="w-full h-full object-cover"
         />
         <div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center"
-          style={{ zIndex: 1, fontFamily: 'Poppins, sans-serif', fontSize: '48px', color: 'white' }}
+          style={{ zIndex: 1, fontFamily: 'Poppins, sans-serif', fontSize: '2rem', color: 'white' }}
         >
           <p>Explore all the clubs</p>
           <p>of your college</p>

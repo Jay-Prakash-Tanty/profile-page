@@ -1,6 +1,7 @@
 import MainLogin from "@/components/(auth)/MainLogin";
-import Carousel from "@/components/carousal/Carousal";
-import ResponsiveAppBar from "@/components/navbar/ResponsiveAppBar";
+
+import EventsAndNews from "@/EventsAndNews/EventsAndNews";
+
 export default function Home() {
 const images = [
   {
@@ -19,16 +20,10 @@ const images = [
 
   return (
     <>
-      <div className="overflow-hidden">
-      <ResponsiveAppBar />
-      <div style={{ width: '100%' }}>
-        <Carousel
-          imagesArray={images}
-          interval={5000}
-        >
-        </Carousel>
-      </div>
-    </div>
+
+      <MainLogin/>
+      <EventsAndNews/>
+
     </>
   );
 }

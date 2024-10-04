@@ -37,12 +37,14 @@ function EmailPasswordLogin() {
             placeholder="Enter your email address"
             // Use React Hook Form's register method to bind the input field
             {...register('email')}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <EmailIcon sx={{ color: '#424242' }} />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <EmailIcon sx={{ color: '#424242' }} />
+                  </InputAdornment>
+                ),
+              },
             }}
             sx={{
               "& .MuiOutlinedInput-input": {
@@ -65,12 +67,14 @@ function EmailPasswordLogin() {
             placeholder="Enter your password"
             // Use React Hook Form's register method to bind the input field
             {...register('password')}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <LockIcon sx={{ color: '#424242' }} />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LockIcon sx={{ color: '#424242' }} />
+                  </InputAdornment>
+                ),
+              },
             }}
             sx={{
               "& .MuiOutlinedInput-input": {

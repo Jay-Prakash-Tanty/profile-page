@@ -3,7 +3,7 @@ import Title from "../Title/Title"
 const Thought = ()=>{
     return(
         <>
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center bg-[#1E1E1E] pb-[4.5vw]">
             <Title Title_Content="Thought of the Day"/>
             
             <div className="w-full flex justify-center "> 

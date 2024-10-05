@@ -3,11 +3,12 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons'
 import Navigation from "./Navigation"
-
-
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 const Footer = ()=>{
     return(
-        <Container disableGutters maxWidth={false} sx={{width:"100%",mt:"4.5vw", py:"4vw",px:"8vw", bgcolor:"#252525"}}>
+        <Container disableGutters maxWidth={false} sx={{width:"100%", py:"4vw",px:"8vw", bgcolor:"#252525"}}>
 
             <Box >
                 
@@ -70,7 +71,7 @@ const Footer = ()=>{
                                     sx={{
                                         color:"#4285F4", 
                                         fontSize:"1.5vw",
-                                        ":hover":{color:"#045DF7",mb:"2vw"                                            
+                                        ":hover":{color:"#045DF7"                                            
                                         }
                                     }}
                                 >

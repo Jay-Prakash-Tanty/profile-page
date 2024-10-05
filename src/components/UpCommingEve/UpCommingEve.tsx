@@ -8,7 +8,7 @@ import SubTitle from "../Title/SubTitle";
 const UpEve =()=>{
     return(
         <>
-        <div className="flex h-fit w-screen  flex-col ">
+        <div className="flex h-fit w-screen  flex-col bg-[#1E1E1E]">
 
             {/* <div className="mt-[40px] sm:mt-[50px]"> */}
                 <Title Title_Content="Upcoming Events"/>

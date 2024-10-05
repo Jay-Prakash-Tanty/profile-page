@@ -3,7 +3,7 @@ import Title from "../Title/Title";
 const About = ()=>{
     return (
     <>
-      <div id="About_section" className="flex h-fit w-screen  flex-col ">
+      <div id="About_section" className="flex h-fit w-screen  flex-col bg-[#1E1E1E]">
       
         <Title Title_Content="About VSSUT, Burla"/>
       

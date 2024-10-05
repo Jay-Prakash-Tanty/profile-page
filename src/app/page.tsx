@@ -1,34 +1,42 @@
-import About from "@/components/AboutSec/About";
-import UpEve from "@/components/UpCommingEve/UpCommingEve";
-import Alumni from "@/components/Alumni/Alumni";
-import Thought from "@/components/Thought_of_day/Thought";
-import Footer from "@/components/footer/Footer";
+
+
+import MainLogin from "@/components/(auth)/MainLogin";
+import ResponsiveAppBar from "@/components/navbar/ResponsiveAppBar";
+import Carousel from "@/components/carousal/Carousal";
+import EventsAndNews from "@/EventsAndNews/EventsAndNews";
+
+
 export default function Home() {
+const images = [
+  {
+    src: '/images/image1.jpg',
+    caption: 'Explore all the clubs \n of your college',
+  },
+  {
+    src: '/images/image2.jpg',
+    caption: 'Explore all the clubs of your college',
+  },
+  {
+    src: '/images/image3.jpg',
+    caption: 'Explore all the clubs of your college',
+  },
+];
+
   return (
     <>
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      Hello Developers
-      
-    </div>
 
 
-    <div className="bg-[#1E1E1E]">
+       <ResponsiveAppBar />
+       <div style={{ width: '100%' }}>
+        <Carousel
+          imagesArray={images}
+          interval={5000}
+        >
+        </Carousel>
+      </div>
+      <MainLogin/>
+      <EventsAndNews/>
 
-      <About/>
-    
-    
-      <UpEve/>
-    
-    
-      <Alumni/>
-    
-    
-      <Thought/>
-    
-    
-      <Footer/>
-
-    </div>
 
     </>
   );

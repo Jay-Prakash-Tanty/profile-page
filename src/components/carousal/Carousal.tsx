@@ -18,7 +18,7 @@ export default function Carousel({ imagesArray, interval }: CarouselProps) {
   }, [imagesArray, interval]);
 
   return (
-    <div className="relative w-full h-[70vh] md:h-[700px]">
+    <div className="relative w-full h-[90vh] md:h-[700px]">
       <div className="overflow-hidden rounded-lg shadow-lg h-full">
         <div
           className="absolute top-0 left-0 w-full h-full"

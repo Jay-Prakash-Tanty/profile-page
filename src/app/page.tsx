@@ -37,7 +37,7 @@ const images = [
         >
         </Carousel>
       </div>
-      <MainLogin/>
+      {/* <MainLogin/> */}
       <About/>
       <EventsAndNews/>      
       <UpEve/>

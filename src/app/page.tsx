@@ -1,5 +1,3 @@
-
-
 import MainLogin from "@/components/(auth)/MainLogin";
 import ResponsiveAppBar from "@/components/navbar/ResponsiveAppBar";
 import Carousel from "@/components/carousal/Carousal";

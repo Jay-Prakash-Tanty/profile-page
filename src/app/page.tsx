@@ -2,7 +2,7 @@
 import MainLogin from "@/components/(auth)/MainLogin";
 import ResponsiveAppBar from "@/components/navbar/ResponsiveAppBar";
 import Carousel from "@/components/carousal/Carousal";
-import EventsAndNews from "@/EventsAndNews/EventsAndNews";
+import EventsAndNews from "@/components/Events and news/EventsAndNews";
 import About from "@/components/AboutSec/About";
 import UpEve from "@/components/UpCommingEve/UpCommingEve";
 import Alumni from "@/components/Alumni/Alumni";
@@ -14,40 +14,22 @@ import Footer from "@/components/footer/Footer";
 import ClubSection from "@/components/clubs/ClubSection";
 
 
-import CounterWrapper  from "@/components/clubs/about";
+import CounterWrapper from "@/components/clubs/about";
 
 import React from 'react';
-export default function Home()
- {
+export default function Home() {
   return (
-  
+
     <>
-
-
-
-       <ResponsiveAppBar />
-       <div style={{ width: '100%' }}>
-        <Carousel
-          imagesArray={images}
-          interval={5000}
-        >
-        </Carousel>
-      </div>
-      {/* <MainLogin/> */}
-      <About/>
-      <EventsAndNews/>      
-      <UpEve/>
-      <Alumni/>
-      <Thought/>
-      <Footer/>
-
-
-
- 
-    <CounterWrapper />
-    <ClubSection />
-   
-
+      <ResponsiveAppBar />
+      <CounterWrapper />
+      <ClubSection />
+      <About />
+      <EventsAndNews />
+      <UpEve />
+      <Alumni />
+      <Thought />
+      <Footer />
     </>
   );
 }

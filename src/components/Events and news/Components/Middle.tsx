@@ -78,9 +78,7 @@ export default function Middle() {
         <CardActions
           sx={{ position: "absolute", right: "10px", bottom: "10px" }}
         >
-          <Button size="small" sx={{ color: "#4285F4" }}>
-            <Typography sx={{ fontSize: "10px" }}>Check Out</Typography>
-          </Button>
+          <Typography sx={{ fontSize: "10px" }}>Check Out</Typography>
         </CardActions>
       </Card>
 
@@ -124,7 +122,7 @@ export default function Middle() {
           </Typography>
         </CardContent>
         <CardActions sx={{ justifyContent: "center", marginTop: "auto" }}>
-          <Button
+          <Typography
             sx={{
               background: "#4285F4",
               color: "white",
@@ -134,10 +132,9 @@ export default function Middle() {
                 background: "#357AE8",
               },
             }}
-            size="small"
           >
             Learn More →
-          </Button>
+          </Typography>
         </CardActions>
       </Card>
     </Box>

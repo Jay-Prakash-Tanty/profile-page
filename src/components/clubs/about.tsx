@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Stack, Box, Grid, Typography } from '@mui/material'; 
+import { Stack, Box, Grid, Typography } from '@mui/material';
 import FastFlipCounter from './Counter';
 
 export default function CounterWrapper() {
@@ -13,30 +13,30 @@ export default function CounterWrapper() {
 
     return (
         <Box
-            onMouseEnter={handleStartAnimation}  
-            onFocus={handleStartAnimation}  
-            tabIndex={0}  
-            sx={{ display: 'block', width: '100vw', backgroundColor: '#252525', py: 2 }}
+            onMouseEnter={handleStartAnimation}
+            onFocus={handleStartAnimation}
+            tabIndex={0}
+            sx={{ display: 'block', width: '100%', backgroundColor: '#252525', py: 2 }}
         >
-            <Grid 
-                container 
-                spacing={2} 
-                justifyContent="center" 
+            <Grid
+                container
+                spacing={2}
+                justifyContent="center"
                 alignItems="center"
             >
                 <Grid item xs={12} sm={4}>
                     <Box sx={{ px: { xs: 2, sm: 4 }, textAlign: 'center' }}>
-                        <FastFlipCounter totalCount={10} startAnimation={startAnimation} color={"#34A853"} description='Clubs and societies'/>
+                        <FastFlipCounter totalCount={10} startAnimation={startAnimation} color={"#34A853"} description='Clubs and societies' />
                     </Box>
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Box sx={{ px: { xs: 2, sm: 4 }, textAlign: 'center' }}>
-                        <FastFlipCounter totalCount={12000} startAnimation={startAnimation} color={"#FBBC04"} description='Active Club Members'/>
+                        <FastFlipCounter totalCount={12000} startAnimation={startAnimation} color={"#FBBC04"} description='Active Club Members' />
                     </Box>
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Box sx={{ px: { xs: 2, sm: 4 }, textAlign: 'center' }}>
-                        <FastFlipCounter totalCount={20} startAnimation={startAnimation} color={"#EA4335"} description='Ongoing Projects'/>
+                        <FastFlipCounter totalCount={20} startAnimation={startAnimation} color={"#EA4335"} description='Ongoing Projects' />
                     </Box>
                 </Grid>
             </Grid>

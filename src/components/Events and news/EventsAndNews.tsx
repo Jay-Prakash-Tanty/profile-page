@@ -8,7 +8,7 @@ export default function EventsAndNews() {
     <Box
       sx={{
         minHeight: "100vh",
-        width: "100vw",
+        width: "100%",
         paddingBottom: "10px",
         paddingTop: "10px",
         backgroundColor: "#1E1E1E",
@@ -26,7 +26,7 @@ export default function EventsAndNews() {
           sx={{
             textAlign: "center",
             fontWeight: "600",
-            fontSize: "24px", // Use static sizes to avoid SSR issues
+            fontSize: "24px",
             md: "36px",
             lineHeight: "54px",
             paddingTop: "10px",
@@ -37,7 +37,7 @@ export default function EventsAndNews() {
         <Typography
           sx={{
             fontWeight: "600",
-            fontSize: "16px", // Keep consistent font size
+            fontSize: "16px",
             lineHeight: "30px",
             color: "#757575",
             textAlign: "center",

@@ -20,7 +20,8 @@ import React from 'react';
 export default function Home() {
   return (
 
-    <>
+    <div className="no-scrollbar">
+    
       <ResponsiveAppBar />
       <CounterWrapper />
       <ClubSection />
@@ -30,6 +31,6 @@ export default function Home() {
       <Alumni />
       <Thought />
       <Footer />
-    </>
+    </div>
   );
 }

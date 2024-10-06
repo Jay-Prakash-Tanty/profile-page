@@ -50,10 +50,10 @@ function ResponsiveAppBar() {
   return (
     <>
       <AppBar position="static" sx={{ backgroundColor: '#252525' }}>
-        <Container maxWidth="xl">
+        <Container>
           <Toolbar disableGutters>
             {/* Logo and Title */}
-            <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center'}}>
               <img
                 src="/images/vssut logo.jpg"
                 alt="VSSUT Logo"

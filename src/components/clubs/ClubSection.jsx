@@ -14,18 +14,18 @@ const clubs = [
 const ClubsSection = () => {
   return (
     <div style={{ padding: '2rem', backgroundColor: '#121212', color: '#ffffff' }}>
-      <Typography variant="h4" align="center" gutterBottom>
+      <Typography variant="h4" align="center">
         Clubs of VSSUT, Burla
       </Typography>
       
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         {clubs.map((club, index) => (
           <Grid 
             item 
             xs={12}      // Full width on mobile
             sm={6}       // 2 cards per row on small screens
             md={4}       // 3 cards per row on medium and larger screens
-            key={index} 
+            key={index}
           >
             <ClubCardWrapper 
               name={club.name} 
@@ -39,11 +39,13 @@ const ClubsSection = () => {
       <div style={{ textAlign: 'center', marginTop: '2rem' }}>
         <Button 
           variant="contained" 
-          color="primary" 
-          style={{ 
-            backgroundColor: '#f0a500',
-            padding: '0.75rem 1.5rem', // Increased padding for a better mobile experience
-            fontSize: '1rem'            // Font size adjusted for better visibility
+          sx={{ 
+            backgroundColor: '#f0a500', // Custom color for the button
+            padding: '0.75rem 1.5rem',  // Increased padding for better mobile experience
+            fontSize: '1rem',           // Adjusted font size for better visibility
+            '&:hover': {
+              backgroundColor: '#c98e00',  // Darker shade on hover
+            }
           }}
         >
           Explore All →

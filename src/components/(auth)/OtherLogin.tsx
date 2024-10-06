@@ -12,8 +12,8 @@ function OtherLogin() {
                 sx={{
                     bgcolor: '#252525',
                     color: 'white',
-                    fontSize:'10px',
-                    textTransform:'capitalize'
+                    fontSize: '10px',
+                    textTransform: 'capitalize'
                 }}
             >
                 Sign in with Google
@@ -25,16 +25,30 @@ function OtherLogin() {
                 sx={{
                     bgcolor: '#252525',
                     color: 'white',
-                    fontSize:'10px',
-                    textTransform:'capitalize'
+                    fontSize: '10px',
+                    textTransform: 'capitalize'
                 }}
             >
-                Sign in with Google
+                Sign in with GitHub
             </Button>
-            <Typography variant='body2' component='span' sx={{color:'#424242',fontSize:'12px'}}>No registerred yet ? <Typography variant='body2' component='span'  sx={{color:'white',textDecoration:'underline'
-            }}> Click here to sign up now</Typography></Typography>
+            <Typography
+                variant='body2'
+                sx={{
+                    color: '#424242',
+                    fontSize: '12px'
+                }}>
+                No registered yet?
+                <Typography
+                    component='span'
+                    sx={{
+                        color: 'white',
+                        textDecoration: 'underline',
+                        cursor: 'pointer'
+                    }}>
+                    &nbsp;Click here to sign up now
+                </Typography>
+            </Typography>
         </Stack>
-        
     );
 }
 

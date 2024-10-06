@@ -3,7 +3,7 @@ import { Box, Stack, TextField, InputAdornment, Typography, Button } from '@mui/
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema } from './authSchema'; // Zod schema
+import { loginSchema } from '@/validation/authSchema';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 

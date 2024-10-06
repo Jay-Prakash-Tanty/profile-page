@@ -1,14 +1,5 @@
 import { z } from 'zod'
-
-/*
-password must contain atleast 8 characters , one uppercase letter , one lowercase letter and one special character
-*/
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
-
-/*
-uppercase, lowercase, space, hyphen(-), apostrophe (') are allowed
-*/
-const fullNameRegex = /^[a-zA-Z\s'-]{3,50}$/;
+import { passwordRegex, fullNameRegex } from '@/constants/index'
 
 const signupSchema = z.object({
   fullName: z
@@ -37,7 +28,7 @@ const loginSchema = z.object({
     .regex(passwordRegex, "Password must contain at least one uppercase letter, one lowercase letter, and one special character")
 });
 
-export type SignupSchema = z.infer<typeof signupSchema>;
-export type LoginSchema = z.infer<typeof loginSchema>;
+export type SignupSchemaType = z.infer<typeof signupSchema>;
+export type LoginSchemaType = z.infer<typeof loginSchema>;
 
 export { signupSchema, loginSchema };

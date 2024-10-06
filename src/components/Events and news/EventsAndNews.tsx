@@ -9,25 +9,25 @@ export default function EventsAndNews() {
       sx={{
         minHeight: "100vh",
         width: "100vw",
-        paddingBottom:"10px",
-        paddingTop:"10px",
+        paddingBottom: "10px",
+        paddingTop: "10px",
         backgroundColor: "#1E1E1E",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap:"60px"
+        gap: "60px",
       }}
     >
-      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <Box
+        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      >
         <Typography
           sx={{
             textAlign: "center",
             fontWeight: "600",
-            fontSize: {
-              xs: "24px", 
-              md: "36px",
-            },
+            fontSize: "24px", // Use static sizes to avoid SSR issues
+            md: "36px",
             lineHeight: "54px",
             paddingTop: "10px",
           }}
@@ -37,10 +37,7 @@ export default function EventsAndNews() {
         <Typography
           sx={{
             fontWeight: "600",
-            fontSize: {
-              xs: "16px",
-              md: "20px",
-            },
+            fontSize: "16px", // Keep consistent font size
             lineHeight: "30px",
             color: "#757575",
             textAlign: "center",
@@ -51,14 +48,14 @@ export default function EventsAndNews() {
         </Typography>
       </Box>
       <Box>
-        <Grid container direction="row" justifyContent="center" alignItems="center" gap="20px">
-          <Grid item>
+        <Grid container spacing={2} justifyContent="center">
+          <Grid item xs={12} sm={4}>
             <Left />
           </Grid>
-          <Grid item>
+          <Grid item xs={12} sm={4}>
             <Middle />
           </Grid>
-          <Grid item>
+          <Grid item xs={12} sm={4}>
             <Right />
           </Grid>
         </Grid>

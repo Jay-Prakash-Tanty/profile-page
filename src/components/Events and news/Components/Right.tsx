@@ -63,11 +63,9 @@ export default function Right() {
             </Typography>
           </CardContent>
           <CardActions sx={{ justifyContent: "flex-end" }}>
-            <a
-              href={'/'} color="primary"
-            >
-              23-12-2024 →
-            </a>
+            <Typography component="a" href="/" sx={{color:"#BDBDBD", fontSize:"10px", fontWeight:"400"}} >
+              29-10-2004 →
+            </Typography>
           </CardActions>
         </CardActionArea>
       </Card>

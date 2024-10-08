@@ -9,6 +9,7 @@ import {
   CardActionArea,
 } from "@mui/material";
 import data from "../data.json";
+import { color } from "framer-motion";
 
 export default function Left() {
   return (
@@ -65,12 +66,13 @@ export default function Left() {
               sx={{
                 position: "absolute",
                 right: "0px",
-                bottom: "0px",
+                bottom: "-1px",
               }}
             >
-              <a href={'/'} color="primary">
-                23-12-2024 →
-              </a>
+              
+              <Typography component="a" href={'/'} sx={{color:"#4285F4",fontSize:"10px",fontWeight:"400"}}>
+                23-12-2024  →
+              </Typography>
             </CardActions>
           </Card>
         );

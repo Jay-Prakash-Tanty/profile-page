@@ -76,9 +76,9 @@ export default function Middle() {
           </Typography>
         </CardContent>
         <CardActions
-          sx={{ position: "absolute", right: "10px", bottom: "10px" }}
+          sx={{ position: "absolute", right: "10px", bottom: "-1px" }}
         >
-          <Typography sx={{ fontSize: "10px" }}>Check Out</Typography>
+          <Typography sx={{ fontSize: "10px" , color:"#4285F4" , fontWeight:"400" }}>Check Out</Typography>
         </CardActions>
       </Card>
 

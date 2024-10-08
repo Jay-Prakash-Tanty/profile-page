@@ -4,7 +4,9 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 function OtherLogin() {
     return (
-        <Stack spacing={2} px={12} my={3}>
+
+        //sign in with google button
+        <Stack spacing={2} px={{ xs: 4, sm: 8, md: 12 }} my={3}>
             <Button
                 size='large'
                 startIcon={<GoogleIcon />}
@@ -18,6 +20,8 @@ function OtherLogin() {
             >
                 Sign in with Google
             </Button>
+
+            {/* sign in with github button */}
             <Button
                 size='large'
                 startIcon={<GitHubIcon />}
@@ -45,7 +49,7 @@ function OtherLogin() {
                         textDecoration: 'underline',
                         cursor: 'pointer'
                     }}>
-                    &nbsp;Click here to sign up now
+                    Click here to sign up now
                 </Typography>
             </Typography>
         </Stack>

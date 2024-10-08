@@ -14,9 +14,12 @@ import ClubSection from "@/components/clubs/ClubSection";
 import CounterWrapper from "@/components/clubs/about";
 
 import React from 'react';
+import Login from "@/components/(auth)/Login";
+import EmailPasswordLogin from "@/components/(auth)/EmailPasswordLogin";
 export default function Home() {
   return (
     <div className="no-scrollbar">
+      <MainLogin authType="sign-in"/>
       <ResponsiveAppBar />
       <Carousel imagesArray={images} interval={5000} />
       <CounterWrapper />

@@ -4,33 +4,43 @@ import { Box, Stack, TextField, InputAdornment, Typography, Button } from '@mui/
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema } from '@/validation/authSchema';
+import { loginSchema, signupSchema } from '@/validation/authSchema';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
+import PersonIcon from '@mui/icons-material/Person';
 
 // Define types based on your Zod schema
 type FormData = {
   email: string;
   password: string;
+  username?: string; 
 };
 
-function EmailPasswordLogin() {
-  // Initialize React Hook Form with Zod validation
+type AuthProps = {
+  authType: 'sign-in' | 'sign-up';
+};
+
+function EmailPasswordLogin({ authType }: AuthProps) {
+  //  Choose the schema based on authType (sign-up or sign-in)
+  const schema = authType === 'sign-up' ? signupSchema : loginSchema;
+
+  //  React Hook Form with Zod validation
   const { handleSubmit, formState: { errors }, reset, control, trigger } = useForm<FormData>({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(schema),
     defaultValues: {
       email: '',
       password: '',
-    }
+      username: '',
+    },
   });
 
-  const [formInteracted, setFormInteracted] = useState(false); // Track if the form was interacted
-  const [formSubmitted, setFormSubmitted] = useState(false); // Track if the form has been submitted
+  const [formInteracted, setFormInteracted] = useState(false); 
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const onSubmit = (data: FormData) => {
     // Handle form submission
     console.log('Form submitted:', data);
-    setFormSubmitted(true);  // Set form as submitted
+    setFormSubmitted(true); 
     reset();
   };
 
@@ -41,9 +51,47 @@ function EmailPasswordLogin() {
   };
 
   return (
-    <Box sx={{ width: "100%" }} px={12}>
+    <Box sx={{ width: "100%" ,px: { xs: 2, sm: 6, md: 12 },}} >
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2} sx={{ alignItems: 'center' }}>
+
+          {/* username field for sign-up */}
+          {authType === 'sign-up' && (
+            <Controller
+              control={control}
+              name="username"
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  variant="outlined"
+                  fullWidth
+                  size="small"
+                  required
+                  placeholder="Enter your username"
+                  slotProps={{
+                    input: {
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <PersonIcon sx={{ color: '#424242' }} />
+                        </InputAdornment>
+                      ),
+                    },
+                  }}
+                  sx={{
+                    "& .MuiOutlinedInput-input": {
+                      color: "white",
+                    },
+                    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                      border: "2px solid #424242",
+                    },
+                  }}
+                  error={!!errors.username}
+                  helperText={errors.username ? errors.username.message : null} // Display error message if validation fails
+                  onBlur={() => handleBlur('username')} // Trigger validation and set form as interacted
+                />
+              )}
+            />
+          )}
 
           {/* Email Field with React Hook Form's Controller */}
           <Controller
@@ -88,7 +136,7 @@ function EmailPasswordLogin() {
             name="password"
             render={({ field }) => (
               <TextField
-                {...field} // Controller will pass props here
+                {...field}
                 variant="outlined"
                 fullWidth
                 size="small"
@@ -129,22 +177,15 @@ function EmailPasswordLogin() {
           Reset
         </Typography>
 
-        {/* Show error message if form is interacted but not yet submitted */}
-        {/* {formInteracted && !formSubmitted && (
-          <Typography
-            variant='body2'
-            sx={{ color: 'red', textAlign: 'center', mt: 2 }}
-          >
-            Form isn't submitted!
+        {/* Forgot password link for sign-in only */}
+        {authType === 'sign-in' && (
+          <Typography variant='body2' sx={{ textDecoration: 'underline',cursor:'pointer', color: '#757575', textAlign: 'right' }}>
+            Forgot password?
           </Typography>
-        )} */}
-
-        <Typography variant='body2' sx={{ textDecoration: 'underline', color: '#757575', textAlign: 'right' }}>
-          Forgot password?
-        </Typography>
+        )}
 
         <Button type="submit" variant='contained' size='large' fullWidth={true} sx={{ my: '30px' }}>
-          LogIn
+          {authType === 'sign-in' ? 'Log In' : 'Sign Up'}
         </Button>
       </form>
     </Box>

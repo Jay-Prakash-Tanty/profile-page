@@ -67,6 +67,7 @@ export default function Left() {
                 position: "absolute",
                 right: "0px",
                 bottom: "-1px",
+                
               }}
             >
               

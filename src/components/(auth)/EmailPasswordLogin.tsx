@@ -18,9 +18,10 @@ type FormData = {
 
 type AuthProps = {
   authType: 'sign-in' | 'sign-up';
+  isAdmin: boolean;
 };
 
-function EmailPasswordLogin({ authType }: AuthProps) {
+function EmailPasswordLogin({ authType, isAdmin }: AuthProps) {
   //  Choose the schema based on authType (sign-up or sign-in)
   const schema = authType === 'sign-up' ? signupSchema : loginSchema;
 

@@ -19,7 +19,7 @@ import EmailPasswordLogin from "@/components/(auth)/EmailPasswordLogin";
 export default function Home() {
   return (
     <div className="no-scrollbar">
-      <MainLogin authType="sign-in"/>
+      <MainLogin />
       <ResponsiveAppBar />
       <Carousel imagesArray={images} interval={5000} />
       <CounterWrapper />

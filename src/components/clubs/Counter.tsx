@@ -50,14 +50,14 @@ export default function FastFlipCounter({
             display="flex"
             justifyContent="center"
             alignItems="center"
-            sx={{ height: '100%', overflow: 'hidden', bgcolor: '#252525' }} 
+            sx={{ height: '100%', overflow: 'hidden', bgcolor: '#1E1E1E' }} 
         >
             <Box
                 sx={{
                     position: 'relative',
-                    width: isMobile ? '150px' : '220px',  // Responsive width
+                    width: isMobile ? '150px' : '270px',  // Responsive width
                     overflow: 'hidden',
-                    bgcolor: '#252525',
+                    bgcolor: '#1E1E1E',
                     borderRadius: 2,
                     display: 'flex',
                     justifyContent: 'center',
@@ -111,6 +111,7 @@ export default function FastFlipCounter({
                         sx={{
                             wordWrap: "break-word", 
                             textAlign: 'center',
+                            fontFamily: 'Poppins'
                         }}
                     >
                         {description}

@@ -4,7 +4,7 @@ import AlumniCard from "./AlumniCard";
 
 const Alumni = () => {
   return (
-    <div className="flex flex-col w-full h-screen bg-[#1E1E1E]">
+    <div className="flex flex-col w-full bg-[#1E1E1E]">
       <Title Title_Content="Alumni Speaks" />
       <SubTitle>
         Insights and Experiences from Our Esteemed Alumni Community

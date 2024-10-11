@@ -16,7 +16,7 @@ export default function CounterWrapper() {
             onMouseEnter={handleStartAnimation}
             onFocus={handleStartAnimation}
             tabIndex={0}
-            sx={{ display: 'block', width: '100%', backgroundColor: '#252525', py: 2 }}
+            sx={{ display: 'block', width: '100%', backgroundColor: '#1E1E1E', py: 2 }}
         >
             <Grid
                 container
@@ -36,7 +36,7 @@ export default function CounterWrapper() {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Box sx={{ px: { xs: 2, sm: 4 }, textAlign: 'center' }}>
-                        <FastFlipCounter totalCount={20} startAnimation={startAnimation} color={"#EA4335"} description='Ongoing Projects' />
+                        <FastFlipCounter totalCount={20} startAnimation={startAnimation} color={"#EA4335"} description='Ongoing Projects and events' />
                     </Box>
                 </Grid>
             </Grid>

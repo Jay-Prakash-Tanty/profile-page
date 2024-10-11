@@ -1,6 +1,8 @@
 "use client";
 
 import * as React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,6 +17,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 const pages = ['Home', 'About', 'Clubs', 'Profile'];
 
 function ResponsiveAppBar() {
+  const router = useRouter()
+  const pathname = usePathname()
   const [activePage, setActivePage] = React.useState(pages[0]);
   const [isSidenavOpen, setSidenavOpen] = React.useState(false);
   const isMobile = useMediaQuery('(max-width: 900px)');
@@ -27,7 +31,13 @@ function ResponsiveAppBar() {
   const handlePageChange = (page: string) => {
     setActivePage(page);
     setSidenavOpen(false); // Close sidenav when a page is selected
+    router.push(page.toLowerCase() === 'home' ? '/' : `/${page.toLowerCase()}`);
   };
+
+  useEffect(() => {
+    const currentPage = pathname === '/' ? 'Home' : pages.find(page => pathname.includes(page.toLowerCase())) || 'Home';
+    setActivePage(currentPage);
+  }, [pathname]);
 
   const handleLoginClick = () => {
     alert('Login clicked');
@@ -66,13 +76,14 @@ function ResponsiveAppBar() {
                 sx={{
                   color: 'inherit',
                   textDecoration: 'none',
-                  fontWeight: 700,
+                  fontWeight: 600,
                   fontSize: '0.8em',
                   textTransform: 'uppercase',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   marginLeft: '8px',
+                  fontFamily: 'Poppins',
                 }}
               >
                 <span style={{ fontSize: '0.9em' }}>Clubs of</span>
@@ -89,7 +100,7 @@ function ResponsiveAppBar() {
                     onClick={() => handlePageChange(page)}
                     sx={{
                       my: 2,
-                      color: activePage === page ? 'white' : '#bdbdbd',
+                      color: activePage === page ? '#ffffff' : '#424242',
                       position: 'relative',
                       fontSize: '18px',
                       padding: '12px 16px',
@@ -156,6 +167,8 @@ function ResponsiveAppBar() {
                     backgroundColor: 'white',
                     color: '#424242',
                   },
+                  fontWeight: 600,
+                  fontFamily: 'Poppins'
                 }}
                 onClick={handleLoginClick}
               >
@@ -191,7 +204,7 @@ function ResponsiveAppBar() {
                   <Button
                     className="sidenav-link"
                     onClick={() => handlePageChange(page)}
-                    sx={{ color: 'white', padding: '10px 20px', width: '100%' }}
+                    sx={{ color: '#424242', padding: '10px 20px', width: '100%' , fontWeight: 600}}
                   >
                     {page}
                   </Button>

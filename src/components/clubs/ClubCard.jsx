@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Card, CardContent, Typography, Button } from '@mui/material';
+import { Card, CardContent, Typography, Button, Stack } from '@mui/material';
 import { RadialBarChart, RadialBar, PolarGrid, PolarRadiusAxis } from "recharts";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'; 
 
@@ -16,15 +16,17 @@ const ClubCard = ({ name, description, logo, members = 200 }) => {
   return (
     <Card
       style={{
-        backgroundColor: '#1d1d1d',
+        backgroundColor: '#252525',
         color: '#ffffff',
         textAlign: 'center',
-        width: 300, 
-        height: 250, 
+        width: '319px', 
+        height: '318px', 
         transition: 'width 0.3s ease', 
         position: 'relative', 
         overflow: 'visible',
         margin: '1rem auto', 
+        boxShadow: '0px 8px 15px 0px #00000040',
+        borderRadius: '8px' 
       }}
       onMouseEnter={() => setIsHovered(true)}  
       onMouseLeave={() => setIsHovered(false)} 
@@ -36,11 +38,11 @@ const ClubCard = ({ name, description, logo, members = 200 }) => {
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: '1rem',
-          position: 'relative', 
+          position: 'relative',
         }}
       >
-           {isHovered && (
-          <Typography variant="h6" style={{ marginBottom: '10px', fontWeight: 'bold' }}>
+          {isHovered && (
+          <Typography variant="h6" style={{ marginBottom: '10px', fontWeight: '600' }} fontFamily={'poppins'}>
             {name}
           </Typography>
         )}
@@ -53,13 +55,11 @@ const ClubCard = ({ name, description, logo, members = 200 }) => {
               width: 100, 
               height: 100, 
               transition: 'opacity 0.3s ease',
-              boxShadow: '0 4px 8px rgba(128, 128, 128, 0.5)', 
-              margin:30
+              margin:25
             }}
           />
         )}
 
-     
         {isHovered && (
           <div style={{ width: '100px', height: '100px' }}>
             <RadialBarChart
@@ -97,7 +97,7 @@ const ClubCard = ({ name, description, logo, members = 200 }) => {
                   fontWeight: 'bold',
                 }}
               >
-                200
+                {members}
               </text>
             </RadialBarChart>
           </div>
@@ -110,12 +110,16 @@ const ClubCard = ({ name, description, logo, members = 200 }) => {
             flexDirection: 'column',
             alignItems: 'center',
             textAlign: 'center',
-            marginTop: '10px',
+            marginBlock: '10px',
           }}
         >
-       
-          {!isHovered && (
-            <Typography variant="body2">{description}</Typography>
+          
+          {!isHovered && (<Stack>
+            <Typography variant="h6" style={{ marginBottom: '10px', fontWeight: '600' , color:'#ffffff'}} fontFamily={'poppins'}>
+            {name}
+          </Typography>
+            <Typography variant="body2" fontFamily={'Poppins'} sx={{fontSize: '16px' , fontWeight: 600 , color: "#BDBDBD"}}>{description}</Typography>
+            </Stack>
           )}
 
           

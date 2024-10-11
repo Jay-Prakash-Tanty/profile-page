@@ -7,7 +7,7 @@ export default function EventsAndNews() {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        // minHeight: "100vh",
         width: "100%",
         paddingBottom: "10px",
         paddingTop: "10px",

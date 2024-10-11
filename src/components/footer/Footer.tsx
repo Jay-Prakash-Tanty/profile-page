@@ -156,15 +156,14 @@ const Footer = ()=>{
 
                     <Box sx={{
                             display:"flex",
-                            gap:"1.5vw"    ,
-                                  
+                            gap:"1.5vw",
                         }}>
                         <Box>
-                            <Navigation Section_Url="#About_section" Link_Name="About"/>                           
+                            <Navigation Section_Url="/about" Link_Name="About"/>                           
                         </Box>
 
                         <Box>
-                            <Navigation Section_Url="#Club_section" Link_Name="Clubs"/>    
+                            <Navigation Section_Url="/clubs" Link_Name="Clubs"/>    
                         </Box>
 
                         <Box>

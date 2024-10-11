@@ -1,15 +1,20 @@
+"use client"
+
 import React from 'react';
+import { useState } from 'react';
 import Login from './Login';
 import LoginBox from './LoginBox';
 import { Box } from '@mui/material';
-import LoginDetails from './LoginDetails';
 
-function MainLogin({ authType }: { authType: 'sign-in' | 'sign-up' }) {
+function MainLogin() {
+  const [authType, setAuthType] = useState<'sign-in' | 'sign-up'>('sign-in');
+  const [isAdmin, setIsAdmin] = useState(false);
+
   return (
     <Box bgcolor='#1E1E1E'>
-      <Login />
+      <Login onAdminSelect={setIsAdmin} />
       {/* Pass authType to LoginBox */}
-      <LoginBox authType={authType} />
+      <LoginBox authType={authType} setAuthType={setAuthType} isAdmin={isAdmin}/>
     </Box>
   );
 }

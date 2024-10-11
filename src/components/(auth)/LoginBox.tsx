@@ -4,9 +4,11 @@ import LoginDetails from './LoginDetails';
 
 type LoginBoxProps = {
   authType: 'sign-in' | 'sign-up';
+  setAuthType: (type: 'sign-in' | 'sign-up') => void;
+  isAdmin: boolean;
 };
 
-function LoginBox({ authType }: LoginBoxProps) {
+function LoginBox({ authType, setAuthType, isAdmin }: LoginBoxProps) {
   return (
     <>
       <Box
@@ -18,7 +20,7 @@ function LoginBox({ authType }: LoginBoxProps) {
           <Typography variant='body2'>Login and stay connected</Typography>
         </Box>
         {/* Pass authType to LoginDetails */}
-        <LoginDetails authType={authType} />
+        <LoginDetails authType={authType} setAuthType={setAuthType} isAdmin={isAdmin} />
       </Box>
     </>
   );

@@ -9,7 +9,7 @@ import {
   CardActionArea,
 } from "@mui/material";
 import data from "../data.json";
-import { color } from "framer-motion";
+
 
 export default function Left() {
   return (

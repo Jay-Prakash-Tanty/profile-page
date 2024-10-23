@@ -15,6 +15,13 @@
   --foreground: #171717;
 }
 
+input:-webkit-autofill {
+  background-color: #424242 !important;
+  color: white !important;
+  -webkit-box-shadow: 0 0 0 30px #424242 inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

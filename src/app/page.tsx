@@ -10,7 +10,7 @@ import Thought from "@/components/Thought_of_day/Thought";
 import Footer from "@/components/footer/Footer";
 import { images } from "@/constants/index";
 import { clubs } from "@/constants/index";
-
+import MediaControlCard from "@/components/achievement/achievement";
 import ClubSection from "@/components/clubs/ClubSection";
 import CounterWrapper from "@/components/clubs/about";
 
@@ -23,6 +23,7 @@ export default function Home() {
   return (
     <div className="no-scrollbar">
        {/* <MainLogin/> */}
+      
       <ResponsiveAppBar isAuthenticated={isAuthenticated} />
       <Carousel imagesArray={images} interval={5000} />
       <CounterWrapper />

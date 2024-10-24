@@ -44,3 +44,190 @@ export const fullNameRegex = /^[a-zA-Z\s'-]{3,50}$/;
         { name: 'Enigma', description: 'Official web and coding club of VSSUT, Burla', logo: '/enigma.jpg'},
         { name: 'Enigma', description: 'Official web and coding club of VSSUT, Burla', logo: '/enigma.jpg'},
       ];
+
+
+     export const imagesArray = [
+        {
+          src: 'ClubPIC2.jpg',
+        },
+        {
+          src: 'ClubPIC2.jpg',
+        },
+        {
+          src: 'ClubPIC2.jpg',
+        }
+      ];
+      export const profiles = [
+        {
+          name:"Prof. Lorem Ipsum Manet",
+          title:"Professor",
+          department:"Lorem Engineering",
+          imageUrl:"enigma.jpg"
+        },
+        {
+          name:"Prof. Lorem Ipsum Manet",
+          title:"Professor",
+          department:"Lorem Engineering",
+          imageUrl:"enigma.jpg"
+        },
+        {
+          name:"Prof. Lorem Ipsum Manet",
+          title:"Professor",
+          department:"Lorem Engineering",
+          imageUrl:"enigma.jpg"},
+        {
+          name:"Prof. Lorem Ipsum Manet",
+          title:"Professor",
+          department:"Lorem Engineering",
+          imageUrl:"enigma.jpg"
+        },
+        {
+          name:"Prof. Lorem Ipsum Manet",
+          title:"Professor",
+          department:"Lorem Engineering",
+          imageUrl:"enigma.jpg"
+        },
+        {
+          name:"Prof. Lorem Ipsum Manet",
+          title:"Professor",
+          department:"Lorem Engineering",
+          imageUrl:"enigma.jpg"},
+        {
+          name:"Prof. Lorem Ipsum Manet",
+          title:"Professor",
+          department:"Lorem Engineering",
+          imageUrl:"enigma.jpg"
+        },
+        {
+          name:"Prof. Lorem Ipsum Manet",
+          title:"Professor",
+          department:"Lorem Engineering",
+          imageUrl:"enigma.jpg"
+        },
+      ];
+      
+      
+      
+      export const profiles1 = [
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2023",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+                    batch: "2024",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2025",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2026",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2027",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2023",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2024",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2025",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2026",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2027",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2023",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2024",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2025",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2026",
+        },
+        {
+          name: " Lorem Ipsum Manet",
+          title: "Web Development",
+          department: "Lorem Engineering",
+          imageUrl:"enigma.jpg",
+          batch: "2027",
+        },
+      ];
+      
+   
+ export const batches = [
+    'All Batches',
+    '2028',
+    '2027',
+    '2026',
+    '2025',
+    '2024',
+    '2023',
+    '2022',
+    '2021',
+    '2020',
+  ];
+
+      

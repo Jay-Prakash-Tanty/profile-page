@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image } from 'react-bootstrap';
 
 interface ImageWithTextProps {
@@ -35,28 +35,32 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({ imageUrl, heading, paragr
     width: '90%',
   };
 
-  // Default font sizes
-  const headingStyle: React.CSSProperties = {
-    fontSize: '28px', // Fixed font size for heading
-    fontWeight: 'bold',
-    margin: '0',
-  };
+  // State for dynamic font sizes
+  const [headingStyle, setHeadingStyle] = useState<React.CSSProperties>({ fontSize: '28px', fontWeight: 'bold', margin: '0' });
+  const [paragraphStyle, setParagraphStyle] = useState<React.CSSProperties>({ fontSize: '20px', margin: '0' });
 
-  const paragraphStyle: React.CSSProperties = {
-    fontSize: '20px', // Fixed font size for paragraph
-    margin: '0',
-  };
-
-  // Responsive adjustments for smaller screens
-  if (typeof window !== 'undefined') {
+  // Function to update styles based on window size
+  const updateStyles = () => {
     if (window.innerWidth < 600) {
-      headingStyle.fontSize = '20px'; // Smaller heading font size for mobile
-      paragraphStyle.fontSize = '15px'; // Smaller paragraph font size for mobile
+      setHeadingStyle({ fontSize: '15px', fontWeight: 'bold', margin: '0' });
+      setParagraphStyle({ fontSize: '10px', margin: '0' });
     } else if (window.innerWidth < 900) {
-      headingStyle.fontSize = '26px'; // Slightly smaller heading for medium screens
-      paragraphStyle.fontSize = '18px'; // Slightly smaller paragraph for medium screens
+      setHeadingStyle({ fontSize: '28px', fontWeight: 'bold', margin: '0' });
+      setParagraphStyle({ fontSize: '20px', margin: '0' });
+    } else {
+      setHeadingStyle({ fontSize: '32px', fontWeight: 'bold', margin: '0' });
+      setParagraphStyle({ fontSize: '22px', margin: '0' });
     }
-  }
+  };
+
+  useEffect(() => {
+    updateStyles(); // Set initial styles
+    window.addEventListener('resize', updateStyles); // Update styles on resize
+
+    return () => {
+      window.removeEventListener('resize', updateStyles); // Cleanup on unmount
+    };
+  }, []);
 
   return (
     <div style={containerStyle}>

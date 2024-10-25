@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Clubcard.module.css'; // Assuming you're using CSS modules
+import styles from './Clubcard.module.css'; // Assuming you're using CSS module
 
 const Card = ({ clubName, coordinatorName, memberCount }) => {
   return (

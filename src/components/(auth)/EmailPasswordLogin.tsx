@@ -1,15 +1,15 @@
 'use client';
 
 import { Box, Stack, TextField, InputAdornment, Typography, Button } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema, signupSchema } from '@/validation/authSchema';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import PersonIcon from '@mui/icons-material/Person';
+import Right from '../Events and news/Components/Right';
 
-// Define types based on your Zod schema
 type FormData = {
   email: string;
   password: string;
@@ -22,33 +22,34 @@ type AuthProps = {
 };
 
 function EmailPasswordLogin({ authType, isAdmin }: AuthProps) {
-  //  Choose the schema based on authType (sign-up or sign-in)
-  const schema = authType === 'sign-up' ? signupSchema : loginSchema;
 
-  //  React Hook Form with Zod validation
-  const { handleSubmit, formState: { errors }, reset, control, trigger } = useForm<FormData>({
+  useEffect(() => {
+    reset();
+  },[authType , isAdmin]);
+
+  const schema = authType === 'sign-up' ? signupSchema : loginSchema;
+  
+  const { handleSubmit, formState: { errors , isSubmitting }, reset, control, trigger } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
       email: '',
       password: '',
-      username: '',
+      username: authType === 'sign-up' ? '' : undefined,
     },
   });
 
   const [formInteracted, setFormInteracted] = useState(false); 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const onSubmit = (data: FormData) => {
-    // Handle form submission
+  async function onSubmit(data: FormData) {
+    await new Promise<void>((resolve) => setTimeout(resolve,5000))
     console.log('Form submitted:', data);
-    setFormSubmitted(true); 
-    reset();
-  };
+  }
 
   const handleBlur = (fieldName: keyof FormData) => {
-    // When a field loses focus, set form as interacted
+    
     setFormInteracted(true);
-    trigger(fieldName);  // Validate the field on blur
+    trigger(fieldName);  
   };
 
   return (
@@ -56,7 +57,7 @@ function EmailPasswordLogin({ authType, isAdmin }: AuthProps) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2} sx={{ alignItems: 'center' }}>
 
-          {/* username field for sign-up */}
+          {}
           {authType === 'sign-up' && (
             <Controller
               control={control}
@@ -87,20 +88,20 @@ function EmailPasswordLogin({ authType, isAdmin }: AuthProps) {
                     },
                   }}
                   error={!!errors.username}
-                  helperText={errors.username ? errors.username.message : null} // Display error message if validation fails
-                  onBlur={() => handleBlur('username')} // Trigger validation and set form as interacted
+                  helperText={errors.username ? errors.username.message : null} 
+                  onBlur={() => handleBlur('username')} 
                 />
               )}
             />
           )}
 
-          {/* Email Field with React Hook Form's Controller */}
+          {}
           <Controller
             control={control}
             name="email"
             render={({ field }) => (
               <TextField
-                {...field} // Controller will pass props here
+                {...field} 
                 variant="outlined"
                 fullWidth
                 size="small"
@@ -125,13 +126,13 @@ function EmailPasswordLogin({ authType, isAdmin }: AuthProps) {
                   },
                 }}
                 error={!!errors.email}
-                helperText={errors.email ? errors.email.message : null} // Display error message if validation fails
-                onBlur={() => handleBlur('email')} // Trigger validation and set form as interacted
+                helperText={errors.email ? errors.email.message : null} 
+                onBlur={() => handleBlur('email')} 
               />
             )}
           />
 
-          {/* Password Field with React Hook Form's Controller */}
+          {}
           <Controller
             control={control}
             name="password"
@@ -162,31 +163,46 @@ function EmailPasswordLogin({ authType, isAdmin }: AuthProps) {
                   },
                 }}
                 error={!!errors.password}
-                helperText={errors.password ? errors.password.message : null} // Display error message if validation fails
-                onBlur={() => handleBlur('password')} // Trigger validation and set form as interacted
+                helperText={errors.password ? errors.password.message : null} 
+                onBlur={() => handleBlur('password')} 
               />
             )}
           />
         </Stack>
 
-        {/* Reset functionality */}
-        <Typography
-          variant='body2'
-          sx={{ textDecoration: 'underline', color: '#757575', textAlign: 'right', cursor: 'pointer' }}
+        {}
+        <Stack>
+        <Stack direction={'row'} justifyContent={'right'}>
+        <Button
+          variant='text' color='error'
+          sx={{ textAlign: 'right', cursor: 'pointer' ,pt: '10px',pb: '5px' , backgroundColor: 'transparent' , fontSize: { xs: '0.6rem', sm: '0.7rem', md: '0.8rem' }, textTransform: 'none'}}
+          disableRipple
           onClick={() => reset()}
         >
           Reset
-        </Typography>
+        </Button>
+        </Stack>
 
-        {/* Forgot password link for sign-in only */}
+        {}
+        <Stack>
         {authType === 'sign-in' && (
-          <Typography variant='body2' sx={{ textDecoration: 'underline',cursor:'pointer', color: '#757575', textAlign: 'right' }}>
-            Forgot password?
-          </Typography>
+          <Stack direction={'row'} justifyContent={'right'}>
+          <Button
+            variant='text'
+            sx={{ textDecoration: 'underline', textAlign: 'right', cursor: 'pointer', backgroundColor: 'transparent' , fontSize: { xs: '0.6rem', sm: '0.7rem', md: '0.8rem' } , textTransform: 'none' , color: '#757575'}}
+            disableRipple
+          >
+            Forgot Password ?
+          </Button>
+          </Stack>
         )}
-
-        <Button type="submit" variant='contained' size='large' fullWidth={true} sx={{ my: '30px' }}>
-          {authType === 'sign-in' ? 'Log In' : 'Sign Up'}
+        </Stack>
+</Stack>
+        <Button type="submit" variant='contained' size='large' fullWidth={true} sx={{ my: '30px','&.Mui-disabled': {
+      backgroundColor: '#6DA4FF',  
+      color: '#FFFFFF',            
+    }, }} disabled={isSubmitting}>
+          {isSubmitting ? 'Submitting' : authType === 'sign-in' ? 'Log In' : 'Sign Up'}
         </Button>
       </form>
     </Box>

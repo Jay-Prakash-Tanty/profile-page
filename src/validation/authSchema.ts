@@ -1,12 +1,12 @@
 import { z } from 'zod'
-import { passwordRegex, fullNameRegex } from '@/constants/index'
+import { passwordRegex, fullNameRegex, usernameRegex } from '@/constants/index'
 
 const signupSchema = z.object({
-  fullName: z
+  username: z
     .string()
-    .min(3, "Full name must be atleast 3 characters")
-    .max(50, "Full name must be less than 50 characters")
-    .regex(fullNameRegex, "only uppercase, lowercase, space, hyphen(-), apostrophe (') are allowed"),
+    .min(3, "too short, less than 3 characters")
+    .max(15, "too long, more than 15 characters")
+    .regex(usernameRegex, "Username must start with a letter,It can include letters, numbers, and special characters but should not contain space"),
   email: z
     .string()
     .email("Invalid email address")

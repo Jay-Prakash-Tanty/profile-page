@@ -27,9 +27,12 @@ function OtherLogin({ setAuthType, authType }: OtherLoginProps) {
                 sx={{
                     bgcolor: '#252525',
                     color: 'white',
-                    fontSize: '10px',
-                    textTransform: 'capitalize'
+                    fontSize: '0.8rem',
+                    textTransform: 'capitalize',
+                    paddingBlock: '1rem'
                 }}
+                disableElevation
+                disableRipple
             >
                 Sign in with Google
             </Button>
@@ -42,9 +45,12 @@ function OtherLogin({ setAuthType, authType }: OtherLoginProps) {
                 sx={{
                     bgcolor: '#252525',
                     color: 'white',
-                    fontSize: '10px',
-                    textTransform: 'capitalize'
+                    fontSize: '0.8rem',
+                    textTransform: 'capitalize',
+                    paddingBlock: '1rem'
                 }}
+                disableElevation
+                disableRipple
             >
                 Sign in with GitHub
             </Button>
@@ -64,6 +70,7 @@ function OtherLogin({ setAuthType, authType }: OtherLoginProps) {
                                 color: 'white',
                                 textDecoration: 'underline',
                                 cursor: 'pointer',
+                                fontSize: { xs: '0.6rem', sm: '0.7rem', md: '1rem' },
                             }}
                             onClick={toggleAuthType}
                         >

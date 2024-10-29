@@ -1,14 +1,18 @@
 "use client";
-
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react';
 import { Card, CardContent, Typography, Button, Stack } from '@mui/material';
 import { RadialBarChart, RadialBar, PolarGrid, PolarRadiusAxis } from "recharts";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'; 
-
-const ClubCard = ({ name, description, logo, members = 200 }) => {
+import Image from 'next/image';
+const ClubCard = ({ name, description, logo,id, members = 200 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/clubs/${id}`);
+  };
   const chartData = [
     { name: "Members", members: 200, fill: "#ff4d4f" },
   ];
@@ -19,17 +23,25 @@ const ClubCard = ({ name, description, logo, members = 200 }) => {
         backgroundColor: '#252525',
         color: '#ffffff',
         textAlign: 'center',
-        width: '319px', 
+        width: { xs: '90%', sm: '75%', md: '70%',lg:"65%" },
+        maxWidth: '600px', 
         height: '318px', 
         transition: 'width 0.3s ease', 
         position: 'relative', 
         overflow: 'visible',
-        margin: '1rem auto', 
+        margin: '0 auto',
         boxShadow: '0px 8px 15px 0px #00000040',
-        borderRadius: '8px' 
+        borderRadius: '8px' ,
+        display:"flex",
+        flexDirection:"column",
+        justifyContent:"center",
+        alignItems:"center",
+        cursor:"pointer"
+        
       }}
       onMouseEnter={() => setIsHovered(true)}  
       onMouseLeave={() => setIsHovered(false)} 
+      onClick={handleClick} 
     >
       <CardContent
         style={{
@@ -37,7 +49,7 @@ const ClubCard = ({ name, description, logo, members = 200 }) => {
           flexDirection: 'column',  
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: '1rem',
+          padding: { xs: '0.5rem', md: '1rem' },
           position: 'relative',
         }}
       >
@@ -48,14 +60,14 @@ const ClubCard = ({ name, description, logo, members = 200 }) => {
         )}
 
         {!isHovered && (
-          <img
+            <Image
             src={logo}
             alt={name}
+            width={80}
+            height={80}
             style={{
-              width: 100, 
-              height: 100, 
               transition: 'opacity 0.3s ease',
-              margin:25
+              // margin: 25,
             }}
           />
         )}

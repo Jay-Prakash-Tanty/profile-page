@@ -1,12 +1,17 @@
 "use client";
 import React, { useState } from 'react';
-import './navbar.css'; // Import the CSS file
+import './navbar.css'; 
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onLinkChange: (link: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onLinkChange }) => {
   const [activeLink, setActiveLink] = useState<string>('home');
 
   const handleLinkClick = (link: string) => {
     setActiveLink(link);
+    onLinkChange(link);
   };
 
   return (
@@ -15,9 +20,9 @@ const Navbar: React.FC = () => {
         {['home', 'members', 'projects', 'achievements'].map(link => (
           <a
             key={link}
-            href={link === 'home' ? '/' : '#'}
+            href="#"
             className={`link ${activeLink === link ? 'activeLink' : ''}`}
-            onClick={() => handleLinkClick(link)}
+            onClick={() => handleLinkClick(link)} 
           >
             {link.charAt(0).toUpperCase() + link.slice(1)}
           </a>

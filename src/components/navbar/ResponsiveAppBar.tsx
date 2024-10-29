@@ -13,24 +13,40 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
-const pages = ['Home', 'About', 'Clubs', 'Profile'];
-
-function ResponsiveAppBar({ isAuthenticated }) {
-  const [activePage, setActivePage] = React.useState(pages[0]);
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+const pages = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/#About_section' },
+  { name: 'Clubs', href: '/clubs' },
+  { name: 'Profile', href: '/profile' }
+];
+interface ResponsiveAppBarProps {
+  isAuthenticated: boolean;
+}
+function ResponsiveAppBar({ isAuthenticated }: ResponsiveAppBarProps) {
+  const [activePage, setActivePage] = React.useState(pages[0].name);
   const [isSidenavOpen, setSidenavOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const isMobile = useMediaQuery('(max-width: 900px)');
   const sidenavRef = React.useRef<HTMLDivElement | null>(null);
 
+  const router = useRouter(); 
   const handleSidenavToggle = () => {
     setSidenavOpen(prev => !prev);
   };
 
-  const handlePageChange = (page: string) => {
-    setActivePage(page);
-    setSidenavOpen(false);
+  const handlePageChange = (pageName: string) => {
+    const selectedPage = pages.find(page => page.name === pageName);
+      if (selectedPage) {
+        setActivePage(pageName);
+        setSidenavOpen(false);
+        router.push(selectedPage.href);
+      }
+    
   };
+  
+  
 
   const handleLoginClick = () => {
     alert('Login clicked');
@@ -61,7 +77,7 @@ function ResponsiveAppBar({ isAuthenticated }) {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isSidenavOpen]);
-
+ 
   return (
     <>
       <AppBar position="static" sx={{ backgroundColor: '#252525' }}>
@@ -82,11 +98,14 @@ function ResponsiveAppBar({ isAuthenticated }) {
 
             {/* Logo and Title */}
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <img
-                src="/images/vssut logo.jpg"
-                alt="VSSUT Logo"
-                style={{ width: 40, height: 40 }}
-              />
+            <Image
+            src="/images/vssut logo.jpg"
+            alt="VSSUT Logo"
+                width={40}
+  height={40}
+  style={{ objectFit: 'contain' }}
+/>
+
               <Typography
                 variant="h6"
                 noWrap
@@ -103,69 +122,83 @@ function ResponsiveAppBar({ isAuthenticated }) {
                   marginLeft: '8px',
                 }}
               >
-                <span style={{ fontSize: { xs: '0.8em', md: '0.9em' } }}>Clubs of</span>
-                <span style={{ fontSize: { xs: '1em', md: '1.2em' } }}>VSSUT</span>
+                  <Typography
+    component="span"
+    sx={{ fontSize: { xs: '0.8em', md: '0.9em' } }}
+  >
+    Clubs of
+  </Typography>
+  <Typography
+    component="span"
+    sx={{ fontSize: { xs: '1em', md: '1.2em' } }}
+  >
+    VSSUT
+  </Typography>
               </Typography>
             </Box>
 
             {/* Navigation Links for Desktop */}
-            {!isMobile && (
-              <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
-                {pages.map((page) => (
-                  <Button
-                    key={page}
-                    onClick={() => handlePageChange(page)}
-                    sx={{
-                      my: 2,
-                      color: activePage === page ? 'white' : '#bdbdbd',
-                      position: 'relative',
-                      fontSize: { xs: '16px', md: '18px' },
-                      padding: '12px 16px',
-                      textTransform: 'none',
-                      '&:hover': {
-                        color: 'white',
-                        '&::after': {
-                          content: '""',
-                          position: 'absolute',
-                          left: '50%',
-                          bottom: '-4px',
-                          height: '2px',
-                          width: '100%',
-                          backgroundColor: 'white',
-                          transform: 'translateX(-50%) scaleX(1)',
-                          transition: 'transform 0.3s ease',
-                        },
-                      },
-                      '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        left: '50%',
-                        bottom: '-4px',
-                        height: '2px',
-                        width: '100%',
-                        backgroundColor: 'transparent',
-                        transform: 'translateX(-50%) scaleX(0)',
-                        transition: 'transform 0.3s ease',
-                      },
-                    }}
-                  >
-                    {page}
-                  </Button>
-                ))}
-              </Box>
-            )}
+            
+{!isMobile && (
+  <Box sx={{ display: 'inline-flex', ml: 'auto' }}>
+    {pages.map((page) => (
+      <Button
+        key={page.name} 
+        onClick={() => handlePageChange(page.name)}
+        sx={{
+          my: 2,
+          color: activePage === page.name ? 'white' : '#bdbdbd',
+          position: 'relative',
+          fontSize: { xs: '16px', md: '18px' },
+          padding: '12px 16px',
+          textTransform: 'none',
+          '&:hover': {
+            color: 'white',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              left: '50%',
+              bottom: '-4px',
+              height: '2px',
+              width: '100%',
+              backgroundColor: 'white',
+              transform: 'translateX(-50%) scaleX(1)',
+              transition: 'transform 0.3s ease',
+            },
+          },
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            left: '50%',
+            bottom: '-4px',
+            height: '2px',
+            width: '100%',
+            backgroundColor: 'transparent',
+            transform: 'translateX(-50%) scaleX(0)',
+            transition: 'transform 0.3s ease',
+          },
+        }}
+      >
+        {page.name}
+      </Button>
+    ))}
+  </Box>
+)}
+
 
             {/* Profile Avatar for Authenticated Users */}
             {isAuthenticated ? (
-              <Avatar
-                as="button"
-                color="secondary"
-                name="Jason Hughes"
-                size="sm"
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                onClick={handleProfileClick}
-                sx={{ ml: 'auto' }}
-              />
+                 <IconButton onClick={handleProfileClick} sx={{ ml: 'auto' }}>
+                 <Avatar
+                   alt="Jason Hughes"
+                   src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                   sx={{
+                     bgcolor: 'secondary.main',  
+                     width: 32,                  
+                     height: 32,
+                   }}
+                 />
+               </IconButton>
             ) : (
               <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
                 <Button
@@ -251,10 +284,10 @@ function ResponsiveAppBar({ isAuthenticated }) {
           <Box sx={{ padding: '10px' }}>
             <ul className="sidenav-menu">
               {pages.map((page) => (
-                <li className="sidenav-item" key={page}>
+                <li className="sidenav-item" key={page.name}>
                   <Button
                     className="sidenav-link"
-                    onClick={() => handlePageChange(page)}
+                    onClick={() => handlePageChange(page.name)}
                     sx={{ 
                       color: 'white', 
                       padding: '10px 20px', 
@@ -262,7 +295,7 @@ function ResponsiveAppBar({ isAuthenticated }) {
                       backgroundColor: '#252525' 
                     }}
                   >
-                    {page}
+                    {page.name}
                   </Button>
                 </li>
               ))}

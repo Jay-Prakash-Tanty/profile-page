@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import ProfileCard from './Card';
 import { batches } from '@/constants';
+
 interface ProfileData {
   name: string;
   title: string;
   department: string;
   imageUrl: string;
-  batch?: string; // Optional batch property
+  batch?: string;
 }
 
 interface CardSectionProps {
@@ -16,14 +17,17 @@ interface CardSectionProps {
 const CardSection: React.FC<CardSectionProps> = ({ profiles }) => {
   const [selectedBatch, setSelectedBatch] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage = 8; // Number of profiles per page
+  const itemsPerPage = 9;
 
   const filteredProfiles = selectedBatch
     ? profiles.filter(profile => profile.batch === selectedBatch)
     : profiles;
 
   const totalPages = Math.ceil(filteredProfiles.length / itemsPerPage);
-  const currentProfiles = filteredProfiles.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const currentProfiles = filteredProfiles.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   const handleBatchChange = (batch: string | null) => {
     setSelectedBatch(batch);
@@ -36,38 +40,42 @@ const CardSection: React.FC<CardSectionProps> = ({ profiles }) => {
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(prevPage => prevPage + 1);
+      handlePageChange(currentPage + 1);
+    } else if (selectedBatch) {
+      setSelectedBatch(null);
+      setCurrentPage(1);
     }
   };
 
+  const isNextButtonDisabled = currentPage === totalPages || totalPages === 0;
+
   return (
     <div style={styles.container}>
-      {/* Centered Batch Selection */}
-      {filteredProfiles.length > 0 && (
-        <div style={styles.batchWrapper}>
-          <div style={styles.batchSelection}>
-            {batches.map((batch) => (
-              <button
-                key={batch}
-                onClick={() => handleBatchChange(batch === 'All Batches' ? null : batch)}
+      {/* Batch Selection */}
+      <div style={styles.batchWrapper}>
+        <div style={styles.batchSelection}>
+          {batches.map((batch) => (
+            <button
+              key={batch}
+              onClick={() => handleBatchChange(batch === 'All Batches' ? null : batch)}
+              style={{
+                ...styles.batchButton,
+                color: selectedBatch === (batch === 'All Batches' ? null : batch) ? 'white' : '#bdbdbd',
+              }}
+            >
+              {batch}
+              <span
                 style={{
-                  ...styles.batchButton,
-                  color: selectedBatch === (batch === 'All Batches' ? null : batch) ? 'white' : '#bdbdbd',
+                  ...styles.underline,
+                  opacity: selectedBatch === (batch === 'All Batches' ? null : batch) ? 1 : 0,
                 }}
-              >
-                {batch}
-                <span
-                  style={{
-                    ...styles.underline,
-                    opacity: selectedBatch === (batch === 'All Batches' ? null : batch) ? 1 : 0,
-                  }}
-                />
-              </button>
-            ))}
-          </div>
+              />
+            </button>
+          ))}
         </div>
-      )}
+      </div>
 
+      {/* Profile Cards */}
       <div style={styles.cardContainer}>
         {currentProfiles.length > 0 ? (
           currentProfiles.map((profile, index) => (
@@ -85,34 +93,36 @@ const CardSection: React.FC<CardSectionProps> = ({ profiles }) => {
       </div>
 
       {/* Pagination */}
-      <div style={styles.pagination}>
-        <div style={styles.pageNumbers}>
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index}
-              onClick={() => handlePageChange(index + 1)}
-              style={{
-                ...styles.pageButton,
-                backgroundColor: currentPage === index + 1 ? '#555' : '#333',
-                color: currentPage === index + 1 ? '#fff' : '#bbb',
-              }}
-            >
-              {index + 1}
-            </button>
-          ))}
+      {filteredProfiles.length > 0 && (
+        <div style={styles.pagination}>
+          <div style={styles.pageNumbers}>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                onClick={() => handlePageChange(index + 1)}
+                style={{
+                  ...styles.pageButton,
+                  backgroundColor: currentPage === index + 1 ? '#555' : '#333',
+                  color: currentPage === index + 1 ? '#fff' : '#bbb',
+                }}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={handleNextPage}
+            disabled={isNextButtonDisabled}
+            style={{
+              ...styles.nextButton,
+              backgroundColor: isNextButtonDisabled ? '#999' : '#28a745',
+              cursor: isNextButtonDisabled ? 'not-allowed' : 'pointer',
+            }}
+          >
+            Next
+          </button>
         </div>
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          style={{
-            ...styles.nextButton,
-            opacity: currentPage === totalPages ? 0.5 : 1,
-            cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-          }}
-        >
-          Next
-        </button>
-      </div>
+      )}
     </div>
   );
 };
@@ -139,7 +149,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     overflowY: 'hidden',
     whiteSpace: 'nowrap',
     padding: '10px 0',
-    maxWidth: '90%', // Adjust for larger screens
+    maxWidth: '90%', 
   },
   batchButton: {
     position: 'relative',
@@ -178,9 +188,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     padding: '10px 15px',
     border: 'none',
     borderRadius: '5px',
-    backgroundColor: '#28a745',
     color: '#fff',
-    cursor: 'pointer',
     transition: 'background-color 0.3s',
   },
   pageNumbers: {

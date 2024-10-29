@@ -28,8 +28,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     textAlign: 'center',
     width: '250px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
-    margin: '15px', // Add margin for spacing between cards
-    border: '1px solid #333', // Add border to the card
+    margin: '15px', 
+    border: '1px solid #333',
   },
   imageContainer: {
     display: 'flex',

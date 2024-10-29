@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import '@fontsource/poppins/400.css'; // Regular weight
-import '@fontsource/poppins/500.css'; // Medium weight
-import '@fontsource/poppins/600.css'; // Semi-bold weight
-import '@fontsource/poppins/700.css'; // Bold weight
+import '@fontsource/poppins/400.css'; 
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css'; 
+import ResponsiveAppBar from "@/components/navbar/ResponsiveAppBar";
+import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Club Management",
@@ -18,7 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+      <ResponsiveAppBar isAuthenticated={true} />
+
         {children}
+        <Footer />
+
       </body>
     </html>
   );

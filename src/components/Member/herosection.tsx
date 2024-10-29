@@ -4,7 +4,7 @@ import { Image } from 'react-bootstrap';
 interface ImageWithTextProps {
   imageUrl: string;
   heading: string;
-  paragraph: string; 
+  paragraph: React.ReactNode;
 }
 
 const ImageWithText: React.FC<ImageWithTextProps> = ({ imageUrl, heading, paragraph }) => {

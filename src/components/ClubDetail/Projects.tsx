@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ProjectCard from '@/components/projects/ProjectCard';
 import { sampleProjects } from '@/constants';
 import Typography from '@mui/material/Typography';
+import NewProject from './NewProject';
 const Projects: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -33,6 +34,7 @@ const Projects: React.FC = () => {
 
   return (
     <div style={styles.container}>
+       <NewProject/>
       <h1 style={{ color: '#fff', textAlign: 'left', fontSize: '30px', marginLeft: "18px", marginTop: "18px" }}>All Projects</h1>
 
      
@@ -48,7 +50,7 @@ const Projects: React.FC = () => {
           style={styles.searchInput}
         />
       </div>
-
+       
       
       <div style={styles.cardContainer}>
         {currentProjects.length > 0 ? (

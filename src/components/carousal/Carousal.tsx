@@ -31,7 +31,13 @@ export default function Carousel({ imagesArray, interval }: CarouselProps) {
         />
         <div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center"
-          style={{ zIndex: 1, fontFamily: 'Poppins, sans-serif', fontSize: '2rem', color: 'white' }}
+          style={{
+            zIndex: 1,
+            fontFamily: 'Poppins, sans-serif',
+            fontSize: 'clamp(2rem, 4vw + 1rem, 4rem)',
+            color: 'white',
+            fontWeight: 600,
+          }}
         >
           <p>Explore all the clubs</p>
           <p>of your college</p>
@@ -45,6 +51,7 @@ export default function Carousel({ imagesArray, interval }: CarouselProps) {
             className={`h-2 transition-all duration-300 ease-in-out ${index === currentIndex ? 'w-8 bg-white' : 'w-2 bg-white/50'
               } rounded-full`}
             onClick={() => setCurrentIndex(index)}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

@@ -24,9 +24,9 @@ export default function Home() {
        {/* <MainLogin/> */}
       
       <Carousel imagesArray={images} interval={5000} />
+      <About />
       <CounterWrapper />
       <ClubSection clubs={ clubs}/>
-      <About />
       <EventsAndNews />
       <UpEve />
       <Alumni />

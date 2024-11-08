@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardMedia, CardContent, Typography, Stack, Box, useMediaQuery, useTheme } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonIcon from '@mui/icons-material/Person';
+import { moveCursor } from 'readline';
 
 type Achievement = {
   image: string;
@@ -31,8 +32,13 @@ const AchievementCard: React.FC<AchievementCardProps> = ({ event }) => {
         borderRadius: '8px',
         gap: isMobile ? '10px' : '20px',
         maxWidth: isMobile ? '70vw' : '90vw', 
-        margin: 'auto', 
+        marginTop: isMobile ? 1 : 0.5, 
         alignItems: 'center',
+        border: '1px',
+        borderColor: '2A2A2A',
+        ":hover": {
+          cursor: 'auto'
+        }
       }}
     >
       <CardMedia

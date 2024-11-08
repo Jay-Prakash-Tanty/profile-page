@@ -6,7 +6,7 @@ import Home from '@/components/ClubDetail/Home';
 import Member from '@/components/ClubDetail/Member';
 import Projects from '@/components/ClubDetail/Projects';
 import ImageWithText from '@/components/Member/herosection';
-import Achievements from '@/components/ClubDetail/Achievements';
+import Achievements from '@/components/achievement/achievement';
 import { imagesArray } from '@/constants';
 import Carousel from '@/components/subComponents/herosection1';
 
@@ -31,7 +31,7 @@ const ClubsDetails: NextPage = () => {
           }
         />}
         {activeLink === 'projects' && <div style={{height: '100px'}}></div>}
-        {activeLink === 'Achievements' && <div style={{height: '100px'}}></div>}
+        {activeLink === 'achievements' && <div style={{height: '100px'}}></div>}
       </div>
 
       <div style={{ position: 'sticky', top: 0,zIndex: 1000, width: '100%' , transform: 'translateY(-75px)' }}>
@@ -41,8 +41,7 @@ const ClubsDetails: NextPage = () => {
         {activeLink === 'home' && <Home />}
         {activeLink === 'members' && <Member />}
         {activeLink === 'projects' && <Projects />}
-        {activeLink === 'Achievements' && <Achievements />}
-
+        {activeLink === 'achievements' && <Achievements />}
       </div>
     </>
   );

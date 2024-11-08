@@ -8,7 +8,6 @@ const Projects: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const itemsPerPage = 8;
 
- 
   const filteredProjects = sampleProjects.filter(project =>
     project.name.toLowerCase().includes(searchQuery.toLowerCase())
   );

@@ -11,13 +11,13 @@ import { images,clubs } from "@/constants/index";
 // import MediaControlCard from "@/components/achievement/achievement";
 import ClubSection from "@/components/clubs/ClubSection";
 import CounterWrapper from "@/components/clubs/about";
+import AchievementCard from "@/components/achievement/achievementCard";
 
 // import React, { useState } from 'react';
 // import Login from "@/components/(auth)/Login";
 // import EmailPasswordLogin from "@/components/(auth)/EmailPasswordLogin";
 
 export default function Home() {
-   
   // const [isAuthenticated, setIsAuthenticated] = useState(true);
   return (
     <div className="no-scrollbar">

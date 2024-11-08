@@ -266,3 +266,13 @@ export const batches = [
   '2021',
   '2020',
 ];
+
+
+//sample achievement
+export const sampleAchievement = {
+  image: '/enigma.jpg',
+  title: 'Annual Coding Marathon: A competitive programming event focused on algorithmic challenges.',
+  faculty: 'Prof. Sanjay Agrawal [Dean of Academic Affairs]',
+  date: 'Monday, 18th December 2023, 4:30 PM',
+  location: 'E-learning centre',
+};

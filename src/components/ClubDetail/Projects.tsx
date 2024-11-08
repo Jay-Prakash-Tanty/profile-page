@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ProjectCard from '@/components/projects/ProjectCard';
 import { sampleProjects } from '@/constants';
 import Typography from '@mui/material/Typography';
+import NewProject from './NewProject';
 const Projects: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -32,7 +33,9 @@ const Projects: React.FC = () => {
 
   return (
     <div style={styles.container}>
-      <h1 style={{ color: '#fff', textAlign: 'left', fontSize: '30px', marginLeft: "18px",fontFamily: 'Poppins , sans-serif' , fontWeight: 600}}>All Projects</h1>
+      <h1 style={{ color: '#fff', textAlign: 'left', fontSize: '30px', marginLeft: "18px", marginTop: "18px" }}>All Projects</h1>
+
+     
       <div style={styles.searchContainer}>
       <Typography variant="h6" component="div" sx={{ fontWeight: 600,position:"absolute",left:"20%",top:"0",marginTop:"12px"}}>
         SEARCH PROJECTS
@@ -45,7 +48,7 @@ const Projects: React.FC = () => {
           style={styles.searchInput}
         />
       </div>
-
+       
       
       <div style={styles.cardContainer}>
         {currentProjects.length > 0 ? (

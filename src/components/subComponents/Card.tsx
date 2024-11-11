@@ -22,9 +22,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, title, department, imag
 
 const styles: { [key: string]: React.CSSProperties } = {
   card: {
-    backgroundColor: '#1c1c1c',
+    backgroundColor: '#252525',
     padding: '20px',
-    borderRadius: '15px',
+    borderRadius: '8px',
     textAlign: 'center',
     width: '250px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',

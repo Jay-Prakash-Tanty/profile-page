@@ -9,7 +9,6 @@ const Projects: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const itemsPerPage = 8;
 
- 
   const filteredProjects = sampleProjects.filter(project =>
     project.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -34,12 +33,10 @@ const Projects: React.FC = () => {
 
   return (
     <div style={styles.container}>
-       <NewProject/>
-      <h1 style={{ color: '#fff', textAlign: 'left', fontSize: '30px', marginLeft: "18px", marginTop: "18px" }}>All Projects</h1>
-
-     
+      <NewProject/>
+      <h1 style={{ color: '#fff', textAlign: 'left', fontSize: '30px', marginLeft: "18px", marginTop: "18px" , fontFamily: 'Poppins , sans-serif' , fontWeight: 600}}>All Projects</h1>
       <div style={styles.searchContainer}>
-      <Typography variant="h6" component="div" sx={{ fontWeight: 'bold',position:"absolute",left:"20%",top:"0",marginTop:"12px"}}>
+      <Typography variant="h6" component="div" sx={{ fontWeight: 600,position:"absolute",left:"20%",top:"0",marginTop:"12px"}}>
         SEARCH PROJECTS
         </Typography>
         <input
@@ -50,7 +47,6 @@ const Projects: React.FC = () => {
           style={styles.searchInput}
         />
       </div>
-       
       
       <div style={styles.cardContainer}>
         {currentProjects.length > 0 ? (
@@ -107,10 +103,11 @@ const styles: { [key: string]: React.CSSProperties } = {
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: '#1E1E1E',
-    padding: '20px 0',
+    paddingBottom: '20px',
+    fontFamily: 'Poppins , sans-serif',
   },
   searchContainer: {
-    width: '50%',
+    width: '70%',
     height:"134px",
     paddingTop:"33px",
     display: 'flex',
